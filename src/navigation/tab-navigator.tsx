@@ -1,20 +1,16 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
-import { Pressable, StyleSheet } from 'react-native';
+import { Heart, Home2, Notification, ShoppingBag } from 'iconsax-react-native';
+import { StyleSheet } from 'react-native';
 
 import { RootStackParamList } from '.';
-import One from '../screens/one';
-import Two from '../screens/two';
+
+import Cart from '~/screens/cart';
+import Favourites from '~/screens/favourites';
+import History from '~/screens/history';
+import Home from '~/screens/home';
 
 const Tab = createBottomTabNavigator();
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />;
-}
 
 type Props = StackScreenProps<RootStackParamList, 'TabNavigator'>;
 
@@ -22,46 +18,54 @@ export default function TabLayout({ navigation }: Props) {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: 'black',
+        tabBarActiveTintColor: 'orange',
+        tabBarStyle: { paddingTop: 20, backgroundColor: '#1E1E1E', borderTopWidth: 0 },
+        headerStyle: { backgroundColor: '#1E1E1E', borderTopWidth: 0 },
       }}>
       <Tab.Screen
-        name="One"
-        component={One}
+        name="Home"
+        component={Home}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-
-          headerRight: () => (
-            <Pressable onPress={() => navigation.navigate('Modal')}>
-              {({ pressed }) => (
-                <FontAwesome
-                  name="info-circle"
-                  size={25}
-                  color="gray"
-                  style={[styles.headerRight, { opacity: pressed ? 0.5 : 1 }]}
-                />
-              )}
-            </Pressable>
-          ),
+          title: '',
+          tabBarIcon: ({ color }) => <Home2 color={color} />,
         }}
       />
       <Tab.Screen
-        name="Two"
-        component={Two}
+        name="Cart"
+        component={Cart}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <ShoppingBag color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Favourite"
+        component={Favourites}
+        options={{
+          title: '',
+          tabBarIcon: ({ color }) => <Heart color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="History"
+        component={History}
+        options={{
+          title: '',
+          tabBarIcon: ({ color }) => <Notification color={color} />,
         }}
       />
     </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  headerRight: {
-    marginRight: 15,
-  },
-  tabBarIcon: {
-    marginBottom: -3,
-  },
-});
+// const styles = StyleSheet.create({
+//   headerRight: {
+//     marginRight: 15,
+//   },
+//   tabBarIcon: {
+//     marginBottom: -3,
+//   },
+//   tabBar: {
+//     marginTop: 4,
+//   },
+// });
