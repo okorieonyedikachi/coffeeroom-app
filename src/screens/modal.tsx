@@ -1,15 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-
-import EditScreenInfo from '../components/edit-screen-info';
-
 export default function Modal() {
   return (
     <View style={styles.container}>
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Text style={styles.title}>Modal</Text>
       <View style={styles.separator} />
-      <EditScreenInfo path="src/screens/modal.tsx" />
     </View>
   );
 }

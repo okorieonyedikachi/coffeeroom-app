@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
 import { Heart, Home2, Notification, ShoppingBag } from 'iconsax-react-native';
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
 import { RootStackParamList } from '.';
 
@@ -19,8 +19,8 @@ export default function TabLayout({ navigation }: Props) {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: 'orange',
-        tabBarStyle: { paddingTop: 20, backgroundColor: '#1E1E1E', borderTopWidth: 0 },
-        headerStyle: { backgroundColor: '#1E1E1E', borderTopWidth: 0 },
+        tabBarStyle: { paddingTop: 20, backgroundColor: '#0C0F14', borderTopWidth: 0 },
+        headerShown: false,
       }}>
       <Tab.Screen
         name="Home"
