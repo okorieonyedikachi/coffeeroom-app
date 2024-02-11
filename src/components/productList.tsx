@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Image, Pressable, FlatList, ScrollView } from 'react-native';
 // import { ScrollView } from 'react-native-gesture-handler';
 
-import { productCoffeeList } from '~/constants/data';
 import { Sizes, colors } from '~/constants/theme';
 
 export interface productListProps {
@@ -9,6 +8,7 @@ export interface productListProps {
   productDescription?: string;
   productPrice?: number;
   productImage?: any;
+  data?: any[];
 }
 
 const ProductList = ({
@@ -16,18 +16,19 @@ const ProductList = ({
   productPrice,
   productDescription,
   productImage,
+  data,
 }: productListProps) => {
   return (
     <ScrollView scrollEnabled horizontal showsHorizontalScrollIndicator={false}>
       <FlatList
-        data={productCoffeeList}
+        data={data}
         horizontal
         renderItem={({ item }) => (
           <View style={styles.container}>
             <View style={{ alignItems: 'center' }}>
               <Image source={item.productImage} style={styles.productImage} />
             </View>
-            <View style={styles.productDescription}>
+            <View>
               <Text style={styles.productTitle}>{item.productTitle}</Text>
               <Text style={{ color: colors.primaryColor, marginBottom: 10, fontSize: 12 }}>
                 {item.productDescription}

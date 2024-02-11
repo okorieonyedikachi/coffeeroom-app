@@ -1,17 +1,10 @@
 import { SearchNormal1 } from 'iconsax-react-native';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Header from '~/components/header';
 import ProductList from '~/components/productList';
+import { CoffeeBeanList, productCoffeeList } from '~/constants/data';
 import { Sizes, colors } from '~/constants/theme';
 
 //makes sure it gets the device width first and applies the width I give any element.
@@ -45,21 +38,17 @@ export default function Home() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <ProductList />
-      {/* <ScrollView scrollEnabled horizontal showsHorizontalScrollIndicator={false}> */}
-      {/* <FlatList
-          data={productCoffeeList}
-          renderItem={({ item }) => (
-            <ProductList
-              productTitle={item.productTitle}
-              productDescription={item.productDescription}
-              productImage={item.productImage}
-              productPrice={item.productPrice}
-            />
-          )}
-        /> */}
-      {/* <ProductList /> */}
-      {/* </ScrollView> */}
+      <ProductList data={productCoffeeList} />
+      <Text
+        style={{
+          color: colors.primaryColor,
+          fontSize: Sizes.md,
+          marginTop: 10,
+          fontWeight: '700',
+        }}>
+        Coffee Beans
+      </Text>
+      <ProductList data={CoffeeBeanList} />
     </View>
   );
 }
@@ -78,7 +67,7 @@ const styles = StyleSheet.create({
   searchBar: {
     backgroundColor: '#141921',
     width: '90%',
-    marginTop: 18,
+    marginTop: 15,
     padding: 10,
     borderRadius: 15,
     flexDirection: 'row',
@@ -86,7 +75,7 @@ const styles = StyleSheet.create({
   },
   coffeeListStyle: {
     flexDirection: 'row',
-    marginTop: 15,
+    marginTop: 12,
   },
   coffeeListItems: {
     color: colors.greyColor,
