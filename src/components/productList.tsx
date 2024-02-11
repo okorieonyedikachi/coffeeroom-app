@@ -1,68 +1,55 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Image, Pressable, FlatList, ScrollView } from 'react-native';
+// import { ScrollView } from 'react-native-gesture-handler';
 
+import { productCoffeeList } from '~/constants/data';
 import { Sizes, colors } from '~/constants/theme';
 
 export interface productListProps {
   productTitle?: string;
   productDescription?: string;
-  productprice?: number;
-  productImage?: string;
+  productPrice?: number;
+  productImage?: any;
 }
 
-const ProductList = () => {
+const ProductList = ({
+  productTitle,
+  productPrice,
+  productDescription,
+  productImage,
+}: productListProps) => {
   return (
     <ScrollView scrollEnabled horizontal showsHorizontalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View style={{ alignItems: 'center' }}>
-          <Image source={require('assets/image 5 (1).png')} style={styles.productImage} />
-        </View>
-        <View style={styles.productDescription}>
-          <Text style={styles.productTitle}>Cappuccino</Text>
-          <Text style={{ color: colors.primaryColor, marginBottom: 10, fontSize: 12 }}>
-            With Steamed Milk
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginBottom: 20,
-              alignItems: 'center',
-            }}>
-            <Text style={styles.productPrice}>
-              <Text style={{ color: '#D17842' }}>$ </Text> 4.20
-            </Text>
-            <Pressable style={styles.buttton}>
-              <Text style={{ fontSize: Sizes.md, color: colors.primaryColor }}>+</Text>
-            </Pressable>
+      <FlatList
+        data={productCoffeeList}
+        horizontal
+        renderItem={({ item }) => (
+          <View style={styles.container}>
+            <View style={{ alignItems: 'center' }}>
+              <Image source={item.productImage} style={styles.productImage} />
+            </View>
+            <View style={styles.productDescription}>
+              <Text style={styles.productTitle}>{item.productTitle}</Text>
+              <Text style={{ color: colors.primaryColor, marginBottom: 10, fontSize: 12 }}>
+                {item.productDescription}
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginBottom: 20,
+                  alignItems: 'center',
+                }}>
+                <Text style={styles.productPrice}>
+                  <Text style={{ color: '#D17842' }}>$ </Text> {item.productPrice}
+                </Text>
+                <Pressable style={styles.buttton}>
+                  <Text style={{ fontSize: Sizes.md, color: colors.primaryColor }}>+</Text>
+                </Pressable>
+              </View>
+            </View>
           </View>
-        </View>
-      </View>
-      <View style={styles.container}>
-        <View style={{ alignItems: 'center' }}>
-          <Image source={require('assets/image 5 (1).png')} style={styles.productImage} />
-        </View>
-        <View style={styles.productDescription}>
-          <Text style={styles.productTitle}>Cappuccino</Text>
-          <Text style={{ color: colors.primaryColor, marginBottom: 10, fontSize: 12 }}>
-            With Steamed Milk
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginBottom: 20,
-              alignItems: 'center',
-            }}>
-            <Text style={styles.productPrice}>
-              <Text style={{ color: '#D17842' }}>$ </Text> 4.20
-            </Text>
-            <Pressable style={styles.buttton}>
-              <Text style={{ fontSize: Sizes.md, color: colors.primaryColor }}>+</Text>
-            </Pressable>
-          </View>
-        </View>
-      </View>
+        )}
+      />
     </ScrollView>
   );
 };
@@ -89,10 +76,6 @@ const styles = StyleSheet.create({
     width: 126,
     height: 126,
     borderRadius: 10,
-  },
-  productDescription: {
-    // width: '85%',
-    alignSelf: 'center',
   },
   productPrice: {
     fontWeight: '700',

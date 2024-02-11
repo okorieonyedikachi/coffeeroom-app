@@ -1,5 +1,13 @@
 import { SearchNormal1 } from 'iconsax-react-native';
-import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Header from '~/components/header';
@@ -38,6 +46,20 @@ export default function Home() {
         ))}
       </ScrollView>
       <ProductList />
+      {/* <ScrollView scrollEnabled horizontal showsHorizontalScrollIndicator={false}> */}
+      {/* <FlatList
+          data={productCoffeeList}
+          renderItem={({ item }) => (
+            <ProductList
+              productTitle={item.productTitle}
+              productDescription={item.productDescription}
+              productImage={item.productImage}
+              productPrice={item.productPrice}
+            />
+          )}
+        /> */}
+      {/* <ProductList /> */}
+      {/* </ScrollView> */}
     </View>
   );
 }
