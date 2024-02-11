@@ -1,5 +1,5 @@
 import { SearchNormal1 } from 'iconsax-react-native';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Header from '~/components/header';
@@ -26,17 +26,17 @@ export default function Home() {
           style={{ marginLeft: 8, color: '#52555A', width: '90%' }}
         />
       </View>
-      {/* <ScrollView
+      <ScrollView
         contentContainerStyle={styles.coffeeListStyle}
         scrollEnabled
-        horizontal={true}
+        horizontal
         showsHorizontalScrollIndicator={false}>
         {coffeeList.map((item, index) => (
           <TouchableOpacity key={index}>
             <Text style={styles.coffeeListItems}>{item}</Text>
           </TouchableOpacity>
         ))}
-      </ScrollView> */}
+      </ScrollView>
       <ProductList />
     </View>
   );
