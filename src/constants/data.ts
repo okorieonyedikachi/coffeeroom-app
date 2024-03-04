@@ -45,4 +45,3 @@ export const CoffeeBeanList = [
     productImage: require('assets/bean2.png'),
   },
 ];
-

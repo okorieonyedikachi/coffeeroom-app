@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Pressable, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, FlatList } from 'react-native';
 // import { ScrollView } from 'react-native-gesture-handler';
 
 import { Sizes, colors } from '~/constants/theme';
@@ -19,7 +19,7 @@ const ProductList = ({
   data,
 }: productListProps) => {
   return (
-    <ScrollView scrollEnabled horizontal showsHorizontalScrollIndicator={false}>
+    <View>
       <FlatList
         data={data}
         horizontal
@@ -51,7 +51,7 @@ const ProductList = ({
           </View>
         )}
       />
-    </ScrollView>
+    </View>
   );
 };
 

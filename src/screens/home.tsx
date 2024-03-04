@@ -8,7 +8,7 @@ import { CoffeeBeanList, productCoffeeList } from '~/constants/data';
 import { Sizes, colors } from '~/constants/theme';
 
 //makes sure it gets the device width first and applies the width I give any element.
-const { width } = Dimensions.get('window');
+Dimensions.get('window');
 
 const coffeeList = ['All ', 'Cappuccino ', 'Espresso ', 'Americano ', 'Macchito'];
 
