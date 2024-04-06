@@ -1,3 +1,4 @@
+import { Link } from '@react-navigation/native';
 import { View, Text, StyleSheet, Image, Pressable, FlatList } from 'react-native';
 // import { ScrollView } from 'react-native-gesture-handler';
 
@@ -41,10 +42,10 @@ const ProductList = ({
                   alignItems: 'center',
                 }}>
                 <Text style={styles.productPrice}>
-                  <Text style={{ color: '#D17842' }}>$ </Text> {item.productPrice}
+                  <Text style={{ color: colors.mintColor }}>$ </Text> {item.productPrice}
                 </Text>
                 <Pressable style={styles.buttton}>
-                  <Text style={{ fontSize: Sizes.md, color: colors.primaryColor }}>+</Text>
+                  <Text style={{ fontSize: Sizes.md, color: colors.greyColor }}>+</Text>
                 </Pressable>
               </View>
             </View>
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     color: colors.primaryColor,
   },
   buttton: {
-    backgroundColor: '#D17842',
+    backgroundColor: colors.mintColor,
     width: 30,
     justifyContent: 'center',
     alignItems: 'center',
